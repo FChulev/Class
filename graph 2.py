@@ -1,13 +1,21 @@
 import numpy as np
 import matplotlib.pyplot as plt
-
-n = int(input())
-x = [None] * n
-y1 = [None] * n
-print(len(x))
-for i in range(n):
-    x[i], y1[i] = map(float, input().split())
+x = []
+y1 = [0] * 20
+y2 = [0] * 20
+st = open("data2.txt", mode = 'r')
+stre = st.read()
+stre = stre.split('\n')
+for i in range(4):
+    y1[5 * i], y2[5 * i], y1[5 * i + 1], y2[5 * i + 1], y1[5 * i + 2], y2[5 * i + 2], y1[5 * i + 3], y2[5 * i + 3], y1[5 * i + 4], y2[5 * i + 4] = map(float, (stre[i]).split())
+for a in [100, 1000, 10000, 100000]:
+    for i in range(5):
+        x.append(a)
 x = np.array(x)
 y1 = np.array(y1)
-plt.scatter(y1, x)
+y2 = np.array(y2)
+plt.scatter(x, y1)
 plt.show()
+plt.scatter(x, y2)
+plt.show()
+st.close()
